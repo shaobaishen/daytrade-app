@@ -1,0 +1,4 @@
+{
+  "build_command": "pip install -r requirements.txt",
+  "start_command": "streamlit run app18.py --server.port $PORT --server.address 0.0.0.0"
+}
