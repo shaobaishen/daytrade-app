@@ -1428,7 +1428,7 @@ if (st.session_state.price_alert_enabled
         and st.session_state.price_alert_price > 0
         and _current_price <= st.session_state.price_alert_price):
     _last = st.session_state.price_alert_last_sent
-    if _last is None or (_time.time() - _last) >= 30:
+    if _last is None or (_time.time() - _last) >= 60:
         send_price_alert_email(ticker, _current_price, st.session_state.price_alert_price, "low")
         st.session_state.price_alert_last_sent = _time.time()
 
@@ -1437,7 +1437,7 @@ if (st.session_state.price_alert_hi_enabled
         and st.session_state.price_alert_hi_price > 0
         and _current_price >= st.session_state.price_alert_hi_price):
     _last_hi = st.session_state.price_alert_hi_last_sent
-    if _last_hi is None or (_time.time() - _last_hi) >= 30:
+    if _last_hi is None or (_time.time() - _last_hi) >= 60:
         send_price_alert_email(ticker, _current_price, st.session_state.price_alert_hi_price, "high")
         st.session_state.price_alert_hi_last_sent = _time.time()
 
