@@ -109,7 +109,7 @@ def send_signal_email(sig: dict, ticker: str, price: float):
     action_title, action_desc = _ACTION_GUIDE.get(
         sig["category"], ("📌 建議操作", "做多進場/空單回補" if sig["type"] == "BUY" else "做空進場/多單出場"))
     action_color = "#00d48a" if sig["type"] == "BUY" else ("#ff6b35" if sig["type"] == "SELL" else "#ffc300")
-    subject = f"app18 【{action_title[:6]}】{ticker} {sig['icon']} {sig['category']} @ {price:.1f}"
+    subject = f" 【{action_title[:6]}】{ticker} {sig['icon']} {sig['category']} @ {price:.1f}"
     html = f"""
     <div style="font-family:'Segoe UI',Arial,sans-serif;max-width:520px;background:#0e1117;
                 border-radius:14px;padding:24px;color:#fff;border:2px solid {type_color};">
@@ -142,7 +142,7 @@ def send_price_alert_email(ticker: str, current_price: float, alert_price: float
     desc      = "現價已達到或低於您設定的下限價，請注意操作。" if is_low else "現價已達到或高於您設定的上限價，請注意操作。"
     price_color = "#ff4b4b" if is_low else "#00d48a"
     border_color= "#ff4b4b" if is_low else "#00d48a"
-    subject   = f"app18 【{icon} {title}】{ticker} 現價 {current_price:.1f} {op_symbol} 設定 {alert_price:.1f}"
+    subject   = f" 【{icon} {title}】{ticker} 現價 {current_price:.1f} {op_symbol} 設定 {alert_price:.1f}"
     html = f"""
     <div style="font-family:'Segoe UI',Arial,sans-serif;max-width:520px;background:#0e1117;
                 border-radius:14px;padding:24px;color:#fff;border:2px solid {border_color};">
