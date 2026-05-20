@@ -35,7 +35,7 @@ GMAIL_USER     = _get_secret("GMAIL_USER", "")
 GMAIL_PASSWORD = _get_secret("GMAIL_PASSWORD", "")
 GMAIL_TO       = _get_secret("GMAIL_TO", GMAIL_USER)
 EMAIL_PRIORITY = {"CRITICAL", "HIGH"}
-EMAIL_COOLDOWN = 300  # 同一類訊號 Email 冷卻秒數
+EMAIL_COOLDOWN = 600  # 同一類訊號 Email 冷卻秒數
 
 
 def _send_email_worker(subject: str, html: str):
