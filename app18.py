@@ -1327,7 +1327,7 @@ with st.sidebar:
         if last_sent is not None:
             import time as _time
             elapsed = _time.time() - last_sent
-            st.success(f"✅ 已觸發，每30秒重送（{int(30-elapsed)}秒後下次）")
+            st.success(f"✅ 已觸發，每60秒重送（{int(60-elapsed)}秒後下次）")
         else:
             st.info(f"📭 等待觸發：現價 ≤ {pa_price:.1f}")
         if st.button("🔄 停止提醒", key="pa_lo_stop"):
@@ -1352,7 +1352,7 @@ with st.sidebar:
         last_hi    = st.session_state.price_alert_hi_last_sent
         if last_hi is not None:
             elapsed_hi = _time.time() - last_hi
-            st.success(f"✅ 已觸發，每30秒重送（{int(30-elapsed_hi)}秒後下次）")
+            st.success(f"✅ 已觸發，每60秒重送（{int(60-elapsed_hi)}秒後下次）")
         else:
             st.info(f"📭 等待觸發：現價 ≥ {pa_hi_price:.1f}")
         if st.button("🔄 停止提醒", key="pa_hi_stop"):
