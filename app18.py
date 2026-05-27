@@ -161,7 +161,7 @@ def send_price_alert_email(ticker: str, current_price: float, alert_price: float
     t.start()
 
 
-st.set_page_config(page_title="即時儀表板 v18", page_icon="📈",
+st.set_page_config(page_title="即時儀表板", page_icon="📈",
                    layout="wide", initial_sidebar_state="expanded")
 
 st.markdown("""
@@ -1258,7 +1258,7 @@ def make_chart(df, ticker, signals_log, rng):
     xs = df.index[0].replace(hour=9,minute=0,second=0) if not df.empty else None
     xe = df.index[0].replace(hour=13,minute=35,second=0) if not df.empty else None
     fig.update_layout(template="plotly_dark",height=760,
-                      title=dict(text=f"📈 {ticker} 全盤ORB即時分析 (v18)",font=dict(size=18,color="#fff")),
+                      title=dict(text=f"📈 {ticker} 全盤ORB即時分析",font=dict(size=18,color="#fff")),
                       xaxis_rangeslider_visible=False,
                       legend=dict(orientation="h",y=1.03,x=0,font=dict(size=11)),
                       margin=dict(l=8,r=110,t=60,b=8),
@@ -1282,7 +1282,7 @@ LEVEL_SIGNAL_CATS={"RSI嚴重超買","RSI嚴重超賣","強制出場時間到","
 
 # ─── Sidebar ─────────────────────────────────────────────────────────────────
 with st.sidebar:
-    st.markdown("## 📊 全盤ORB即時分析 v18")
+    st.markdown("## 📊 全盤ORB即時分析")
     st.markdown("---")
     ticker   = st.text_input("股票代號",value="2330",max_chars=6).strip()
     interval = st.selectbox("K棒週期",["1m","5m","15m"],index=1)
@@ -1301,7 +1301,7 @@ with st.sidebar:
             st.session_state.level_cooldown={}
             st.session_state.email_cooldown={}
     st.markdown("---")
-    st.markdown("### 🎯 v18 趨勢確認過濾")
+    st.markdown("### 🎯 趨勢確認過濾")
     trend_filter_on = st.toggle("啟用 ADX+VWAP斜率過濾進場",value=True,
                                 key="trend_filter_toggle")
     adx_min = st.slider("ADX 盤整門檻（低於=擋進場）",10.0,35.0,20.0,1.0,
@@ -1491,7 +1491,7 @@ meta_source=df.attrs.get("source","yfinance")
 # ─── Page Title ──────────────────────────────────────────────────────────────
 stock_name=get_stock_name_tw(ticker)
 name_part=f"　{stock_name}" if stock_name else ""
-st.markdown(f"# 📈 即時儀表板 v18 — {ticker}{name_part}"
+st.markdown(f"# 📈 即時儀表板 — {ticker}{name_part}"
             f"　<span style='font-size:16px;color:#8892a4'>({meta_symbol})</span>",
             unsafe_allow_html=True)
 
@@ -1668,7 +1668,7 @@ if _blocked_signals:
     _bl = "　|　".join(_blocked_signals[:4])
     st.markdown(f"""<div style="background:#2a1808;border:1px dashed #ffa500;border-radius:8px;
         padding:7px 16px;margin:4px 0;color:#ffa500;font-size:12px">
-      🛡️ v18 已過濾未確認進場訊號：{_bl}</div>""", unsafe_allow_html=True)
+      🛡️ 已過濾未確認進場訊號：{_bl}</div>""", unsafe_allow_html=True)
 
 st.markdown("---")
 st.plotly_chart(make_chart(df,ticker,st.session_state.signal_log,rng), use_container_width=True)
@@ -1875,7 +1875,7 @@ with tab1:
 """)
         st.error("**三不原則：不追過熱（RSI>90+乖離>3%）／不攤平（只停損換股）／不留倉（13:20前出清）**")
         st.warning(
-            "📐 **v18 統計誠實聲明**：本策略多數參數（09:30-09:35 窗口、RSI 62 vs 68、"
+            "📐 **統計誠實聲明**：本策略多數參數（09:30-09:35 窗口、RSI 62 vs 68、"
             "10:30-11:00 等）源自『單一檔股票、約 59 天』的回測。樣本數小"
             "（部分子訊號 n<30，『午盤 100% 勝率』可能僅 3~5 筆），統計上**不具顯著性**，"
             "屬過度擬合風險區。實盤請：①把這些數字當『假設』非『規律』 "
